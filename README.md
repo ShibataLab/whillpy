@@ -1,6 +1,8 @@
 # whillpy
 Unofficial python package for WHILL Model CK control
 
+![WHILL](whillpy/docs/whill.png)
+
 ## Installation Steps
 There are two ways to install
 1. Install using pip
