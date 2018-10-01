@@ -1,7 +1,7 @@
 # whillpy
 Unofficial python package for WHILL Model CK control
 
-![WHILL](whillpy/docs/whill.png)
+![WHILL](docs/whill.png)
 
 ## Installation Steps
 There are two ways to install
@@ -23,3 +23,10 @@ whill = Whill(port='/dev/ttyUSB0')
 # control the power
 whill.set_power(Power.On)
 ```
+Examples can be found in [examples](examples) directory of this package
+
+## Issues
+Please check [here](https://github.com/ShibataLab/whillpy/issues) and create issues.
+
+## Authors
+[Ravi Prakash Joshi](https://ravijo.github.io/)
