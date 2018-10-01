@@ -15,6 +15,17 @@ There are two ways to install
 1. Install from source
     * Use the following command `python setup.py install`
 
+## Connection Diagram
+In order to control WHILL Model CK, we propse to use Raspberry Pi 3 module. This module can easily be powerd up by the provided USB socket in WHILL. Below are the connection diagrams-
+
+**Power**
+
+![power](docs/power.jpg)
+
+**Connections**
+
+![connections](docs/connections.jpg)
+
 ## Usage
 Below is an example-
 
