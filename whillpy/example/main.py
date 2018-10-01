@@ -8,5 +8,8 @@
 # import modules
 from whillpy import Whill, Power
 
+# initialize Whill by providing the name of serial port
 whill = Whill(port='/dev/ttyUSB0')
+
+# control the power
 whill.set_power(Power.On)
