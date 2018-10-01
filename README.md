@@ -2,7 +2,11 @@
 Unofficial python package for WHILL Model CK control
 
 ## Installation Steps
-* `python setup.py install`
+There are two ways to install
+1. Install using pip
+    * Use the following command `pip install whillpy`
+1. Install from source
+    * Use the following command `python setup.py install`
 
 ## Usage
 Below is an example-
