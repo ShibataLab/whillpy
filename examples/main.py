@@ -13,3 +13,6 @@ whill = Whill(port='/dev/ttyUSB0')
 
 # control the power
 whill.set_power(Power.On)
+
+# move straight while turning left
+whill.move(straight=10, turn=-50)
