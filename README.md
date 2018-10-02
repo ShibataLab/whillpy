@@ -4,7 +4,7 @@ Unofficial python package for WHILL Model CK control
 ![WHILL](docs/whill.png)
 
 ## Dependencies
-1. Python 2.7
+1. Python 2 or 3
 1. [pyserial](https://pythonhosted.org/pyserial)
     * It can easily be installed using pip i.e., `pip install pyserial`
 
@@ -38,6 +38,9 @@ whill = Whill(port='/dev/ttyUSB0')
 
 # control the power
 whill.set_power(Power.On)
+
+# move straight while turning left
+whill.move(straight=10, turn=-50)
 ```
 Examples can be found in [examples](examples) directory of this package
 
