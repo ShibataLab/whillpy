@@ -6,11 +6,11 @@
 # Date: 2018/10/01
 
 # import modules
+from __future__ import print_function
 import sys
 import serial
 import time
 from options import Power, Joystick, CommandId
-from __future__ import print_function
 
 
 def log(message, level=sys.stderr):
