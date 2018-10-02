@@ -9,12 +9,14 @@ Unofficial python package for WHILL Model CK control
     * It can easily be installed using pip i.e., `pip install pyserial`
 
 ## Installation Steps
-There are two ways to install
-1. Install using pip
-    * Use the following command `pip install whillpy`
-1. Install from source
-    * Use the following command `python setup.py install`
-
+Install from source
+1. Clone or download the repository
+1. Use the following command `python setup.py install`
+      * Alternatively the package can be installed to a user directory using the following command 
+```
+python setup.py install --user
+```
+ 
 ## Connection Diagram
 In order to control WHILL Model CK, we propose to use Raspberry Pi 3 module. This module can easily be powered up by the provided USB socket in WHILL. Below are the connection diagrams -
 
@@ -47,5 +49,5 @@ Examples can be found in [examples](examples) directory of this package.
 ## Issues
 Please check [here](https://github.com/ShibataLab/whillpy/issues) and create issues.
 
-## Authors
+## Author
 [Ravi Prakash Joshi](https://ravijo.github.io/)
