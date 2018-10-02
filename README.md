@@ -35,7 +35,7 @@ Below is an example-
 # import modules
 from whillpy import Whill, Power
 
-# initialize Whill by providing the name of serial port
+# initialize Whill by providing the name of the serial port
 whill = Whill(port='/dev/ttyUSB0')
 
 # control the power
