@@ -16,7 +16,7 @@ There are two ways to install
     * Use the following command `python setup.py install`
 
 ## Connection Diagram
-In order to control WHILL Model CK, we propse to use Raspberry Pi 3 module. This module can easily be powerd up by the provided USB socket in WHILL. Below are the connection diagrams-
+In order to control WHILL Model CK, we propose to use Raspberry Pi 3 module. This module can easily be powered up by the provided USB socket in WHILL. Below are the connection diagrams -
 
 **Power**
 
@@ -42,7 +42,7 @@ whill.set_power(Power.On)
 # move straight while turning left
 whill.move(straight=10, turn=-50)
 ```
-Examples can be found in [examples](examples) directory of this package
+Examples can be found in [examples](examples) directory of this package.
 
 ## Issues
 Please check [here](https://github.com/ShibataLab/whillpy/issues) and create issues.
