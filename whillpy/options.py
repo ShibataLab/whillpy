@@ -30,6 +30,14 @@ class Power:
             )
 
 
+class Joystick:
+    EnableHostControl = 0
+    DisableHostControl = 1
+    Min = -100
+    Max = +100
+
+
 class CommandId:
     ProtocolSign = 0xAF
     SetPower = 0x02
+    SetJoystick = 0x03

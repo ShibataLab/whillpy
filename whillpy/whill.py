@@ -6,9 +6,17 @@
 # Date: 2018/10/01
 
 # import modules
+import sys
 import serial
 import time
-from options import Power, CommandId
+from options import Power, Joystick, CommandId
+from __future__ import print_function
+
+
+def log(message, level=sys.stderr):
+    ''' function for backward compatibility of print statement
+    '''
+    print(message, file=level)
 
 
 class Whill:
@@ -20,7 +28,7 @@ class Whill:
         try:
             self.connection = serial.Serial(port=port, baudrate=38400)
         except serial.SerialException as e:
-            print '[ERROR] %s' % e
+            log('[ERROR] %s' % e)
         self.previous_time = None
         self.successive_power_wait = 5.0  # sec. wait in order to execute next command
 
@@ -33,7 +41,7 @@ class Whill:
             # print out the valid values
             power_options = ['Power.%s' % option[0] for option in Power]
             power_options = ', '.join(power_options)
-            print '[ERROR] invalid input. valid values are %s' % power_options
+            log('[ERROR] invalid input. valid values are %s' % power_options)
             return -1
 
         # wait for sometime if we have already sent power command previously
@@ -42,12 +50,32 @@ class Whill:
             current_time - self.previous_time) > self.successive_power_wait
 
         if entry_condition is False:
-            print '[ERROR] wait for %d seconds to execute command' % self.successive_power_wait
+            log('[ERROR] wait for %d seconds to execute command' %
+                self.successive_power_wait)
             return -1
 
         self.previous_time = current_time
         set_power_command = [CommandId.SetPower, power]
         return self._send_command(set_power_command)
+
+    def move(self, straight, turn):
+        ''' move WHILL as per given straight and turn parameters
+            input: straight = Joystick value in front/back direction (-100 ~ +100)
+                   turn = Joystick value in left/right direction (-100 ~ +100)
+        '''
+        if not Joystick.Min <= straight <= Joystick.Max:
+            log('[ERROR] invalid straight input. valid values are (%d ~ %d)' % (
+                Joystick.Min, Joystick.Max))
+            return -1
+
+        if not Joystick.Min <= turn <= Joystick.Max:
+            log('[ERROR] invalid turn input. valid values are (%d ~ %d)' % (
+                Joystick.Min, Joystick.Max))
+            return -1
+
+        set_joystick_command = [
+            CommandId.SetJoystick, Joystick.EnableHostControl, straight, turn]
+        return self._send_command(set_joystick_command)
 
     def _get_checksum(self, command):
         ''' checksum is the value of XOR of following values:
@@ -59,8 +87,15 @@ class Whill:
         # data length incluse 1 byte for checksum. hence we need to add 1
         data_len = len(command) + 1
         checksum = 0
-        for value in command:
-            checksum ^= value  # XOR
+        for idx, value in enumerate(command):
+            # negative values are stored as 2's compliment
+            if value < 0:
+                # in order to calculate 2's compliment, we need to covert
+                # the number into binary, flip the bits and then add 1 into it
+                # alternativly we can simply add 2^8 to the number
+                # (remeber that we are dealing with 8 bit numbers)
+                command[idx] = 2**8 + value
+            checksum ^= command[idx]  # XOR
         checksum ^= CommandId.ProtocolSign ^ data_len
         return checksum, data_len
 

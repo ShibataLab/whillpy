@@ -1,3 +1,11 @@
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
+# setup.py: script to facilitate installation of the package
+# Author: Ravi Joshi
+# Date: 2018/10/02
+
+# import modules
 from setuptools import setup, find_packages
 
 setup(name='whillpy',
