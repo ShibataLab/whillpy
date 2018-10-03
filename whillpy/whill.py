@@ -10,7 +10,8 @@ from __future__ import print_function
 import sys
 import serial
 import time
-from .options import power, Joystick, CommandId
+from .options import Joystick, CommandId
+from .options import Power
 
 
 def log(message, level=sys.stderr):
@@ -19,7 +20,7 @@ def log(message, level=sys.stderr):
     print(message, file=level)
 
 
-class connect:
+class Connect:
     def __init__(self, port):
         ''' Whill control class
             input: serial port name
@@ -41,10 +42,10 @@ class connect:
             input: power option
             returns: number of bytes written to the interface
         '''
-        if not power._has_value(option):
+        if not Power._has_value(option):
             # print out the valid values
             power_options = ['power.%s' % op[0]
-                             for op in power if not op[0].startswith('_')]
+                             for op in Power if not op[0].startswith('_')]
             power_options = ', '.join(power_options)
             log('[ERROR] invalid input. valid values are %s' % power_options)
             return -1
