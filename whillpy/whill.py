@@ -25,17 +25,21 @@ class Connect:
         ''' Whill control class
             input: serial port name
         '''
-        self.connection = None
+        self._connection = None
         try:
             # following UART configurations are taken from
             # the communication specifications manual
-            self.connection = serial.Serial(
-                port=port, baudrate=38400, parity=None, bytesize=8, stopbits=2)
+            self._connection = serial.Serial(
+                port=port,
+                baudrate=38400,
+                parity=serial.PARITY_NONE,
+                bytesize=serial.EIGHTBITS,
+                stopbits=serial.STOPBITS_TWO)
         except serial.SerialException as e:
             log('[ERROR] %s' % e)
-        self.previous_time = None
+        self._previous_time = None
         # wait in seconds in order to execute next command
-        self.successive_power_wait = 5.0
+        self._successive_power_wait = 5.0
 
     def set_power(self, option):
         ''' turn on or off the power of WHILL
@@ -52,15 +56,15 @@ class Connect:
 
         # wait for sometime if we have already sent power command previously
         current_time = time.time()
-        entry_condition = self.previous_time is None or (
-            current_time - self.previous_time) > self.successive_power_wait
+        entry_condition = self._previous_time is None or (
+            current_time - self._previous_time) > self._successive_power_wait
 
         if entry_condition is False:
             log('[ERROR] wait for %d seconds to execute command' %
-                self.successive_power_wait)
+                self._successive_power_wait)
             return -1
 
-        self.previous_time = current_time
+        self._previous_time = current_time
         set_power_command = [CommandId.SetPower, option]
         return self._send_command(set_power_command)
 
@@ -122,10 +126,10 @@ class Connect:
         '''
         command = self._attach_metadata(command)
         command = bytearray(command)
-        return self.connection.write(command)
+        return self._connection.write(command)
 
     def __del__(self):
         ''' cleanup the serial connection object
         '''
-        if self.connection:
-            self.connection.close()
+        if self._connection:
+            self._connection.close()
