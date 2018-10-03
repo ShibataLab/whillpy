@@ -26,12 +26,15 @@ class connect:
         '''
         self.connection = None
         try:
-            # following UART configurations are taken from the communication specifications manual
-            self.connection = serial.Serial(port=port, baudrate=38400, parity=None, bytesize=8, stopbits=2)
+            # following UART configurations are taken from
+            # the communication specifications manual
+            self.connection = serial.Serial(
+                port=port, baudrate=38400, parity=None, bytesize=8, stopbits=2)
         except serial.SerialException as e:
             log('[ERROR] %s' % e)
         self.previous_time = None
-        self.successive_power_wait = 5.0  # sec. wait in order to execute next command
+        # wait in seconds in order to execute next command
+        self.successive_power_wait = 5.0
 
     def set_power(self, option):
         ''' turn on or off the power of WHILL
