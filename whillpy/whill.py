@@ -26,7 +26,8 @@ class connect:
         '''
         self.connection = None
         try:
-            self.connection = serial.Serial(port=port, baudrate=38400)
+            # following serial port configurations are taken from the communication specifications manual
+            self.connection = serial.Serial(port=port, baudrate=38400, parity=None, bytesize=8, stopbits=2)
         except serial.SerialException as e:
             log('[ERROR] %s' % e)
         self.previous_time = None
