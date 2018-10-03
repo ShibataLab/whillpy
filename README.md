@@ -12,11 +12,11 @@ Unofficial python package for WHILL Model CK control
 Install from source
 1. Clone or download the repository
 1. Use the following command `python setup.py install`
-      * Alternatively the package can be installed to a user directory using the following command 
+      * Alternatively the package can be installed to a user directory using the following command
 ```
 python setup.py install --user
 ```
- 
+
 ## Connection Diagram
 In order to control WHILL Model CK, we propose to use Raspberry Pi 3 module. This module can easily be powered up by the provided USB socket in WHILL. Below are the connection diagrams -
 
@@ -32,14 +32,13 @@ In order to control WHILL Model CK, we propose to use Raspberry Pi 3 module. Thi
 Below is an example-
 
 ```
-# import modules
-from whillpy import Whill, Power
+import whillpy
 
 # initialize Whill by providing the name of the serial port
-whill = Whill(port='/dev/ttyUSB0')
+whill = whillpy.connect(port='/dev/ttyUSB0')
 
 # control the power
-whill.set_power(Power.On)
+whill.set_power(whillpy.power.on)
 
 # move straight while turning left
 whill.move(straight=10, turn=-50)

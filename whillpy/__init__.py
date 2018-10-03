@@ -6,5 +6,5 @@
 # Date: 2018/10/01
 
 # import modules
-from .whill import Whill
-from .options import Power
+from .whill import connect
+from .options import power

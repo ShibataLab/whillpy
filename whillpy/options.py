@@ -6,14 +6,14 @@
 # Date: 2018/10/01
 
 
-class Power:
-    Off = 0
-    On = 1
+class power:
+    off = 0
+    on = 1
 
     ''' check if the input value belongs to the class
     '''
     @classmethod
-    def has_value(cls, value):
+    def _has_value(cls, value):
         attrs = vars(cls)
         return any(item == value for item in attrs.values())
 
