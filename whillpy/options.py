@@ -6,7 +6,7 @@
 # Date: 2018/10/01
 
 
-class power:
+class Power:
     off = 0
     on = 1
 
