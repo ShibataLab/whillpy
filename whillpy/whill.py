@@ -10,7 +10,7 @@ from __future__ import print_function
 import sys
 import serial
 import time
-from options import power, Joystick, CommandId
+from .options import power, Joystick, CommandId
 
 
 def log(message, level=sys.stderr):
