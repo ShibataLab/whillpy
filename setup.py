@@ -16,4 +16,5 @@ setup(name='whillpy',
       author_email='joshi.ravi-prakash869@mail.kyutech.jp',
       license='MIT',
       packages=find_packages(),
+      install_requires=['pyserial'],
       )
