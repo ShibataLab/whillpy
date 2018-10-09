@@ -6,7 +6,7 @@ Unofficial python package for WHILL Model CK control
 ## Dependencies
 1. Python 2 or 3
 1. [pyserial](https://pythonhosted.org/pyserial)
-    * It can easily be installed using pip i.e., `pip install pyserial`
+    * ~It can easily be installed using pip i.e., `pip install pyserial`~ *(it will be installed automatically)*
 
 ## Installation Steps
 Install from source
