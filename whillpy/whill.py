@@ -37,6 +37,8 @@ class Connect:
                 stopbits=serial.STOPBITS_TWO)
         except serial.SerialException as e:
             log('[ERROR] %s' % e)
+            raise # throw the exception
+
         self._previous_time = None
         # wait in seconds in order to execute next command
         self._successive_power_wait = 5.0
