@@ -9,7 +9,7 @@
 from setuptools import setup, find_packages
 
 setup(name='whillpy',
-      version='0.1',
+      version='0.2',
       description='Unofficial python package for WHILL Model CK control',
       url='http://github.com/ShibataLab/whillpy',
       author='Ravi Prakash Joshi',
