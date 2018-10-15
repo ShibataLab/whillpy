@@ -9,10 +9,15 @@ Unofficial python package for WHILL Model CK control
     * ~It can easily be installed using pip i.e., `pip install pyserial`~ *(it will be installed automatically)*
 
 ## Installation Steps
-Install from source
-1. Clone or download the repository
-1. Use the following command `python setup.py install`
-      * Alternatively the package can be installed to a user directory using the following command
+There are many ways to install `whillpy`. Please choose an option from below-
+1. Install using pip
+      * `pip install whillpy`
+1. Install using conda
+      * `conda install -c ravijoshi whillpy`
+1. Install from source
+      1. Clone or download the repository
+      1. Use the following command `python setup.py install`
+            * Alternatively the package can be installed to a user directory using the following command
 ```
 python setup.py install --user
 ```
