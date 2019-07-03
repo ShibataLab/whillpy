@@ -54,12 +54,14 @@ Examples can be found in [examples](examples) directory of this package.
 Please check [here](https://github.com/ShibataLab/whillpy/issues) and create issues.
 
 ## Errors
-* While executing it, if following error is found 
+While executing whillpy, if following error is encountered:
 ```
 [ERROR] could not open port /dev/ttyUSB0: [Errno 13] Permission denied: '/dev/ttyUSB0'
 ```
-Execute following
-`$ sudo chmod 666 /dev/ttyUSB0 `
+Please execute following:
+```
+sudo chmod 666 /dev/ttyUSB0
+```
 
 ## Author
 [Ravi Prakash Joshi](https://ravijo.github.io/)
